@@ -24,3 +24,23 @@ and open the template in the editor.
 .carousel-caption {
     color: black;
 }
+.card-deck {
+    margin-top: 32px;
+    margin-right: 0px;
+    margin-left: 0px;
+}
+.game {
+    margin: 0 auto;
+    text-align: center;
+}
+.card-group {
+    text-align: center;
+    margin: 0 auto;
+    width: 85%
+}
+.footer {
+    width:100%;
+    text-align: center;
+    background: #F8F9FA;
+    padding: 10px;
+}
