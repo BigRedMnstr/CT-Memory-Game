@@ -7,4 +7,20 @@ and open the template in the editor.
     Created on : 2017-12-11, 19:17:19
     Author     : Mike
 */
+.social {
+    width: 48px;
+    height: 48px;
+}
+.jumbotron {
+    background: url('../img/programming.jpg') no-repeat, center center;
+    background-size: cover;
+    text-align: center;
+}
 
+.jt_text {
+    background: rgba(204, 204, 204, 0.9);
+}
+
+.carousel-caption {
+    color: black;
+}
