@@ -24,3 +24,43 @@ p {
     margin-top: 15px;
     margin-bottom: 25px;
 }
+
+.board {
+    width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+.card {
+    width: 128px;
+    height: 128px;
+    display: inline-block;
+    margin: 3px;
+    background-image: url('../img/easier/ct.png');
+    background-position: center;
+    border: 3px solid #f80018;
+    border-radius: 5px;
+    cursor: pointer;
+    filter: brightness(70%);
+    transition: all .3s ease-in-out;
+}
+.card:hover {
+    border: 3px solid #e0a800;
+    filter: brightness(100%);
+}
+.cardA {
+    width: 128px;
+    height: 128px;
+    display: inline-block;
+    margin: 3px;
+    background-image: url('../img/easier/ct.png');
+    background-position: center;
+    border: 3px solid #e0a800;
+    border-radius: 5px;
+    cursor: default;
+    filter: brightness(100%);
+    transition: all .3s ease-in-out;
+}
+.score {
+    margin-top: 8px;
+    text-align: center;
+}
