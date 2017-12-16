@@ -1,5 +1,26 @@
 var cards = ['js.png', 'angular.png', 'sass.png', 'js.png', 'less.png', 'jquery.png', 'git.png', 'html5.png', 'sass.png', 'css3.png', 'css3.png', 'jquery.png', 'angular.png', 'git.png', 'html5.png', 'less.png'];
 
+function shuffle(cards) {
+    let counter = cards.length;
+
+    // While there are elements in the array
+    while (counter > 0) {
+        // Pick a random index
+        let index = Math.floor(Math.random() * counter);
+
+        // Decrease counter by 1
+        counter--;
+
+        // And swap the last element with it
+        let temp = cards[counter];
+        cards[counter] = cards[index];
+        cards[index] = temp;
+    }
+
+    return cards;
+}
+shuffle(cards);
+
 var c0 = document.getElementById('c0');
 var c1 = document.getElementById('c1');
 var c2 = document.getElementById('c2');
@@ -85,9 +106,9 @@ function revealCard(nr) {
     if (opacityValue != 0 && lock == false) {
         lock = true;
         
-        var obraz = "url(img/easier/" + cards[nr] + ")";
+        var image = "url(img/easier/" + cards[nr] + ")";
 
-        $('#c' + nr).css('background-image', obraz);
+        $('#c' + nr).css('background-image', image);
         $('#c' + nr).toggleClass('cardA');
 
         if (oneVisible == false)
