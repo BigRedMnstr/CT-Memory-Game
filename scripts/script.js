@@ -105,7 +105,7 @@ function revealCard(nr) {
 
     if (opacityValue != 0 && lock == false) {
         lock = true;
-        
+
         var image = "url(img/easier/" + cards[nr] + ")";
 
         $('#c' + nr).css('background-image', image);
@@ -138,13 +138,13 @@ function revealCard(nr) {
 function hide2Cards(nr1, nr2) {
     $('#c' + nr1).css('opacity', '0');
     $('#c' + nr2).css('opacity', '0');
-    
+
     pairsLeft--;
-    
-    if(pairsLeft == 0){
+
+    if (pairsLeft == 0) {
         $('.board').html('<h1>Wygrałeś!<br>Ukończyłeś grę w ' + turnCounter + ' tur.</h1>');
     }
-        
+
     lock = false;
 }
 function restore2Cards(nr1, nr2) {
@@ -153,8 +153,6 @@ function restore2Cards(nr1, nr2) {
 
     $('#c' + nr2).css('background-image', 'url(img/easier/ct.png)');
     $('#c' + nr2).toggleClass('cardA');
-    
+
     lock = false;
 }
-
-   
