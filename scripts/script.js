@@ -22,10 +22,18 @@ function shuffle(cards) {
 shuffle(cards);
 
 $(function() {
-    $('button').on('click', function() {
+    $('#easy').on('click', function() {
         var $tile = $('.tile');
         for (i = 1; i <= 16; i++)
-        $("#board").append('<div id="c' + ($tile.length) + 1 + '" class="card"></div>');
+        $("#board").append('<div id="c' + ($tile.length + i++) + '" class="card"></div>');
+    });
+});
+
+$(function() {
+    $('#hard').on('click', function() {
+        var $tile = $('.tile');
+        for (i = 1; i <= 32; i++)
+        $("#board").append('<div id="c' + ($tile.length + i++) + '" class="card"></div>');
     });
 });
 
