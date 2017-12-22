@@ -30,6 +30,7 @@ p {
     margin: 0 auto;
     text-align: center;
 }
+
 .card {
     width: 128px;
     height: 128px;
@@ -68,4 +69,9 @@ p {
 .buttons {
     text-align: center;
     margin-bottom: 20px;
+}
+
+.btn, btn-primary {
+    cursor: pointer;
+    background: #0056b3;
 }
