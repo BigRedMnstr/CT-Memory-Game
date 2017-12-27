@@ -104,6 +104,7 @@ var turnCounter = 0;
 var visible_nr;
 var lock = false;
 var pairsLeft = 8;
+
 function revealCard(nr) {
 
     var opacityValue = $('#c' + nr + 1).css('opacity');
@@ -140,7 +141,7 @@ function hide2Cards(nr1, nr2) {
     $('#c' + nr2).css('opacity', '0');
     pairsLeft--;
     if (pairsLeft == 0) {
-        $('.board').html('<h1>Wygrałeś!<br>Ukończyłeś grę w ' + turnCounter + ' tur.</h1>');
+        $('#board').html('<h1>Wygrałeś!<br>Ukończyłeś grę w ' + turnCounter + ' tur.</h1>');
     }
 
     lock = false;
