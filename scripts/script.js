@@ -100,8 +100,8 @@ function revealCardEasy(elem) {
 }
 
 function hide2Cards(nr1, nr2) {
-    $('#c' + nr1).css('opacity', '0');
-    $('#c' + nr2).css('opacity', '0');
+    $('#c' + nr1).css('visibility', 'hidden');
+    $('#c' + nr2).css('visibility', 'hidden');
 
     pairsLeft--;
     if (pairsLeft === 0) {
@@ -165,8 +165,8 @@ function revealCardHard(elem) {
     }
 }
 function hide2Cards(nr1, nr2) {
-    $('#c' + nr1).css('opacity', '0');
-    $('#c' + nr2).css('opacity', '0');
+    $('#c' + nr1).css('visibility', 'hidden');
+    $('#c' + nr2).css('visibility', 'hidden');
     pairsLeft--;
     if (pairsLeft === 0) {
         $('#board').html('<h1>Wygrałeś!<br>Ukończyłeś grę w ' + turnCounter + ' tur.</h1>');
