@@ -53,7 +53,7 @@ shuffle(cardsHard);
 $(function () {
     $('#easy').on('click', function () {
         $('.card').on("click", function () {
-            revealCard(this);
+            revealCardEasy(this);
         });
     });
 });
@@ -64,7 +64,7 @@ var visible_nr;
 var lock = false;
 var pairsLeft = 8;
 
-function revealCard(elem) {
+function revealCardEasy(elem) {
 
     var $elem = $(elem);
     var nr = Number($elem.attr("data-index"));
@@ -120,7 +120,7 @@ function restore2Cards(nr1, nr2) {
 $(function () {
     $('#hard').on('click', function () {
         $('.card').on("click", function () {
-            revealCard(this);
+            revealCardHard(this);
         });
     });
 });
@@ -131,7 +131,7 @@ var visible_nr;
 var lock = false;
 var pairsLeft = 16;
 
-function revealCard(elem) {
+function revealCardHard(elem) {
     var $elem = $(elem);
     var nr = Number($elem.attr("data-index"));
     var opacityValue = $('#c' + nr).css('opacity');
