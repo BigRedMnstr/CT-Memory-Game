@@ -4,20 +4,24 @@ var cardsHard = ['js.png', 'angular.png', 'sass.png', 'js.png', 'less.png', 'jqu
 //Drawing the board
 
 $(function () {
-    $('#easy').on('click', function () {
-        var $tile = $('.tile');
-        for (i = 0; i < 16; i++)
-            $("#board").append('<div id="c' + ($tile.length + i) + '" class="card"></div>');
-    });
-});
 
-$(function () {
-    $('#hard').on('click', function () {
-        var $tile = $('.tile');
-        for (i = 0; i < 32; i++)
-            $("#board").append('<div id="c' + ($tile.length + i) + '" class="card"></div>');
-            $("#board").css("width", "1200px");
+    $('#easy').on('click', function () {
+        startGame(16);
     });
+    $('#hard').on('click', function () {
+        startGame(32);
+    });
+
+    function startGame(nr) {
+        var $tile = $('.tile');
+
+        for (i = 0; i < nr; i++) {
+            $("#board").append('<div id="c' + ($tile.length + i) + '" class="card" data-index="' + $tile.length + i + '"></div>');
+        }
+        if (i === 32) {
+            $("#board").css("width", "1200px");
+        }
+    }
 });
 
 // Shuffle arrays with images in it
@@ -27,6 +31,7 @@ function shuffle(cards) {
 
     // While there are elements in the array
     while (counter > 0) {
+
         // Pick a random index
         let index = Math.floor(Math.random() * counter);
 
@@ -46,58 +51,13 @@ shuffle(cardsEasy);
 shuffle(cardsHard);
 
 
-$(function () {
+$(function Easy () {
     $('#easy').on('click', function () {
-
-        c0.addEventListener("click", function () {
-            revealCard(0);
-        });
-        c1.addEventListener("click", function () {
-            revealCard(1);
-        });
-        c2.addEventListener("click", function () {
-            revealCard(2);
-        });
-        c3.addEventListener("click", function () {
-            revealCard(3);
-        });
-        c4.addEventListener("click", function () {
-            revealCard(4);
-        });
-        c5.addEventListener("click", function () {
-            revealCard(5);
-        });
-        c6.addEventListener("click", function () {
-            revealCard(6);
-        });
-        c7.addEventListener("click", function () {
-            revealCard(7);
-        });
-        c8.addEventListener("click", function () {
-            revealCard(8);
-        });
-        c9.addEventListener("click", function () {
-            revealCard(9);
-        });
-        c10.addEventListener("click", function () {
-            revealCard(10);
-        });
-        c11.addEventListener("click", function () {
-            revealCard(11);
-        });
-        c12.addEventListener("click", function () {
-            revealCard(12);
-        });
-        c13.addEventListener("click", function () {
-            revealCard(13);
-        });
-        c14.addEventListener("click", function () {
-            revealCard(14);
-        });
-        c15.addEventListener("click", function () {
-            revealCard(15);
+        $('.card').on("click", function () {
+            revealCard(this);
         });
     });
+});
 
 var oneVisible = false;
 var turnCounter = 0;
@@ -105,28 +65,33 @@ var visible_nr;
 var lock = false;
 var pairsLeft = 8;
 
-function revealCard(nr) {
+Easy ();
 
-    var opacityValue = $('#c' + nr + 1).css('opacity');
-    if (opacityValue != 0 && lock == false) {
+function revealCard(elem) {
+
+
+    var $elem = $(elem);
+    var nr = Number($elem.attr("data-index"));
+    var opacityValue = $('#c' + nr).css('opacity');
+    if (opacityValue != 0 && lock === false) {
         lock = true;
         var image = "url(img/easier/" + cardsEasy[nr] + ")";
         $('#c' + nr).css('background-image', image);
         $('#c' + nr).toggleClass('cardA');
-        if (oneVisible == false)
+        if (oneVisible === false)
         {
             oneVisible = true;
             visible_nr = nr;
             lock = false;
         } else
         {
-            if (cardsEasy [visible_nr] == cardsEasy[nr]) {
+            if (cardsEasy [visible_nr] === cardsEasy[nr]) {
                 setTimeout(function () {
-                    hide2Cards(nr, visible_nr)
+                    hide2Cards(nr, visible_nr);
                 }, 750);
             } else {
                 setTimeout(function () {
-                    restore2Cards(nr, visible_nr)
+                    restore2Cards(nr, visible_nr);
                 }, 1000);
             }
 
@@ -136,11 +101,13 @@ function revealCard(nr) {
         }
     }
 }
+
 function hide2Cards(nr1, nr2) {
     $('#c' + nr1).css('opacity', '0');
     $('#c' + nr2).css('opacity', '0');
+
     pairsLeft--;
-    if (pairsLeft == 0) {
+    if (pairsLeft === 0) {
         $('#board').html('<h1>Wygrałeś!<br>Ukończyłeś grę w ' + turnCounter + ' tur.</h1>');
     }
 
@@ -152,138 +119,48 @@ function restore2Cards(nr1, nr2) {
     $('#c' + nr2).css('background-image', 'url(img/easier/ct.png)');
     $('#c' + nr2).toggleClass('cardA');
     lock = false;
-}
+};
+
+
+$(function Hard() {
+    $('#hard').on('click', function () {
+        $('.card').on("click", function () {
+            revealCard(this);
+        });
+    });
 });
 
-$(function () {
-    $('#hard').on('click', function () {
-
-        c0.addEventListener("click", function () {
-            revealCard(0);
-        });
-        c1.addEventListener("click", function () {
-            revealCard(1);
-        });
-        c2.addEventListener("click", function () {
-            revealCard(2);
-        });
-        c3.addEventListener("click", function () {
-            revealCard(3);
-        });
-        c4.addEventListener("click", function () {
-            revealCard(4);
-        });
-        c5.addEventListener("click", function () {
-            revealCard(5);
-        });
-        c6.addEventListener("click", function () {
-            revealCard(6);
-        });
-        c7.addEventListener("click", function () {
-            revealCard(7);
-        });
-        c8.addEventListener("click", function () {
-            revealCard(8);
-        });
-        c9.addEventListener("click", function () {
-            revealCard(9);
-        });
-        c10.addEventListener("click", function () {
-            revealCard(10);
-        });
-        c11.addEventListener("click", function () {
-            revealCard(11);
-        });
-        c12.addEventListener("click", function () {
-            revealCard(12);
-        });
-        c13.addEventListener("click", function () {
-            revealCard(13);
-        });
-        c14.addEventListener("click", function () {
-            revealCard(14);
-        });
-        c15.addEventListener("click", function () {
-            revealCard(15);
-            });
-        c16.addEventListener("click", function () {
-            revealCard(16);
-        });
-        c17.addEventListener("click", function () {
-            revealCard(17);
-        });
-        c18.addEventListener("click", function () {
-            revealCard(18);
-        });
-        c19.addEventListener("click", function () {
-            revealCard(19);
-        });
-        c20.addEventListener("click", function () {
-            revealCard(20);
-        });
-        c21.addEventListener("click", function () {
-            revealCard(21);
-        });
-        c22.addEventListener("click", function () {
-            revealCard(22);
-        });
-        c23.addEventListener("click", function () {
-            revealCard(23);
-        });
-        c24.addEventListener("click", function () {
-            revealCard(24);
-        });
-        c25.addEventListener("click", function () {
-            revealCard(25);
-        });
-        c26.addEventListener("click", function () {
-            revealCard(26);
-        });
-        c27.addEventListener("click", function () {
-            revealCard(27);
-        });
-        c28.addEventListener("click", function () {
-            revealCard(28);
-        });
-        c29.addEventListener("click", function () {
-            revealCard(29);
-        });
-        c30.addEventListener("click", function () {
-            revealCard(30);
-        });
-        c31.addEventListener("click", function () {
-            revealCard(31);
-            });
-    });
+Hard();
 
 var oneVisible = false;
 var turnCounter = 0;
 var visible_nr;
 var lock = false;
-var pairsLeft = 8;
+var pairsLeft = 16;
 
-function revealCard(nr) {
-
-    var opacityValue = $('#c' + nr + 1).css('opacity');
-    if (opacityValue != 0 && lock == false) {
+function revealCard(elem) {
+    var $elem = $(elem);
+    var nr = Number($elem.attr("data-index"));
+    var opacityValue = $('#c' + nr).css('opacity');
+    if (opacityValue != 0 && lock === false) {
         lock = true;
         var image = "url(img/harder/" + cardsHard[nr] + ")";
         $('#c' + nr).css('background-image', image);
         $('#c' + nr).toggleClass('cardA');
-        if (oneVisible == false)
+        if (oneVisible === false)
         {
             oneVisible = true;
             visible_nr = nr;
             lock = false;
         } else
         {
-            if (cardsHard [visible_nr] == cardsHard[nr]) {
+            if (cardsHard [visible_nr] === cardsHard[nr]) {
                 setTimeout(function () {
-                    hide2Cards(nr, visible_nr)
+                    hide2Cards(nr, visible_nr);
                 }, 750);
             } else {
                 setTimeout(function () {
-                    restore2Cards(nr, visible_nr)
+                    restore2Cards(nr, visible_nr);
                 }, 1000);
             }
 
@@ -297,7 +174,7 @@ function hide2Cards(nr1, nr2) {
     $('#c' + nr1).css('opacity', '0');
     $('#c' + nr2).css('opacity', '0');
     pairsLeft--;
-    if (pairsLeft == 0) {
+    if (pairsLeft === 0) {
         $('#board').html('<h1>Wygrałeś!<br>Ukończyłeś grę w ' + turnCounter + ' tur.</h1>');
     }
 
@@ -309,5 +186,4 @@ function restore2Cards(nr1, nr2) {
     $('#c' + nr2).css('background-image', 'url(img/easier/ct.png)');
     $('#c' + nr2).toggleClass('cardA');
     lock = false;
-}
-});
+};
