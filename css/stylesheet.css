@@ -44,3 +44,6 @@ and open the template in the editor.
     background: #F8F9FA;
     padding: 10px;
 }
+.display-3 {
+    font-size: 3rem;
+}
