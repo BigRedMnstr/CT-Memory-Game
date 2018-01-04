@@ -60,6 +60,7 @@ p {
     cursor: default;
     filter: brightness(100%);
     transition: all .3s ease-in-out;
+    pointer-events: none;
 }
 .score {
     margin-top: 8px;
