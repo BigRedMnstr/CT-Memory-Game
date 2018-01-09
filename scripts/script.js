@@ -1,6 +1,6 @@
 var cardsEasy = ['js.png', 'angular.png', 'sass.png', 'js.png', 'less.png', 'jquery.png', 'git.png', 'html5.png', 'sass.png', 'css3.png', 'css3.png', 'jquery.png', 'angular.png', 'git.png', 'html5.png', 'less.png'];
 var cardsAdv = ['ruby.png', 'ruby.png', 'react.png', 'react.png', 'node.png', 'node.png', 'java.png', 'java.png', 'apple.png', 'apple.png', 'android.png', 'android.png', 'php.png', 'php.png', 'wp.png', 'wp.png'];
-var cardsHard = cardsEasy.concat(cardsAdv);
+var cardsHard = [];
 
 var oneVisible = false;
 var turnCounter = 0;
@@ -19,6 +19,7 @@ $(function () {
     $('#hard').on('click', function () {
         startGame(32);
         pairsLeft = 16;
+        cardsHard = cardsEasy.concat(cardsAdv);
     });
 
     function startGame(nr) {
