@@ -2,15 +2,23 @@ var cardsEasy = ['js.png', 'angular.png', 'sass.png', 'js.png', 'less.png', 'jqu
 var cardsAdv = ['ruby.png', 'ruby.png', 'react.png', 'react.png', 'node.png', 'node.png', 'java.png', 'java.png', 'apple.png', 'apple.png', 'android.png', 'android.png', 'php.png', 'php.png', 'wp.png', 'wp.png'];
 var cardsHard = cardsEasy.concat(cardsAdv);
 
+var oneVisible = false;
+var turnCounter = 0;
+var visible_nr;
+var lock = false;
+var pairsLeft = 0;
+
 //Drawing the board
 
 $(function () {
 
     $('#easy').on('click', function () {
         startGame(16);
+        pairsLeft = 8;
     });
     $('#hard').on('click', function () {
         startGame(32);
+        pairsLeft = 16;
     });
 
     function startGame(nr) {
@@ -58,12 +66,6 @@ $(function () {
         });
     });
 });
-
-var oneVisible = false;
-var turnCounter = 0;
-var visible_nr;
-var lock = false;
-var pairsLeft = 8;
 
 function revealCardEasy(elem) {
 
@@ -126,13 +128,8 @@ $(function () {
     });
 });
 
-var oneVisible = false;
-var turnCounter = 0;
-var visible_nr;
-var lock = false;
-var pairsLeft = 16;
-
 function revealCardHard(elem) {
+
     var $elem = $(elem);
     var nr = Number($elem.attr("data-index"));
     var opacityValue = $('#c' + nr).css('opacity');
@@ -163,21 +160,4 @@ function revealCardHard(elem) {
             oneVisible = false;
         }
     }
-}
-function hide2Cards(nr1, nr2) {
-    $('#c' + nr1).css('visibility', 'hidden');
-    $('#c' + nr2).css('visibility', 'hidden');
-    pairsLeft--;
-    if (pairsLeft === 0) {
-        $('#board').html('<h1>Wygrałeś!<br>Ukończyłeś grę w ' + turnCounter + ' tur.</h1>');
-    }
-
-    lock = false;
-}
-function restore2Cards(nr1, nr2) {
-    $('#c' + nr1).css('background-image', 'url(img/easier/ct.png)');
-    $('#c' + nr1).toggleClass('cardA');
-    $('#c' + nr2).css('background-image', 'url(img/easier/ct.png)');
-    $('#c' + nr2).toggleClass('cardA');
-    lock = false;
 }
