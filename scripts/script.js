@@ -8,8 +8,6 @@ var visible_nr;
 var lock = false;
 var pairsLeft = 0;
 
-//Drawing the board
-
 $(main);
 
 function main() {
@@ -21,11 +19,19 @@ function main() {
 $('#easy').on('click', function easyGame() {
     startGame(16);
     pairsLeft = 8;
+    shuffle(cardsEasy);
+    $('.card').on("click", function () {
+        revealCard(this, cardsEasy);
+    });
 });
 $('#hard').on('click', function hardGame() {
     startGame(32);
     pairsLeft = 16;
     cardsHard = cardsEasy.concat(cardsAdv);
+    shuffle(cardsHard);
+    $('.card').on("click", function () {
+        revealCard(this, cardsHard);
+    });
 });
 
 function startGame(nr) {
@@ -39,48 +45,18 @@ function startGame(nr) {
     }
 }
 
-
-// Shuffle arrays with images in it
-
 function shuffle(cards) {
     let counter = cards.length;
 
-    // While there are elements in the array
     while (counter > 0) {
-
-        // Pick a random index
         let index = Math.floor(Math.random() * counter);
-
-        // Decrease counter by 1
         counter--;
-
-        // And swap the last element with it
         let temp = cards[counter];
         cards[counter] = cards[index];
         cards[index] = temp;
     }
-
     return cards;
 }
-
-shuffle(cardsEasy);
-shuffle(cardsHard);
-
-$(function () {
-    $('#easy').on('click', function () {
-        $('.card').on("click", function () {
-            revealCard(this, cardsEasy);
-        });
-    });
-});
-
-$(function () {
-    $('#hard').on('click', function () {
-        $('.card').on("click", function () {
-            revealCard(this, cardsHard);
-        });
-    });
-});
 
 function revealCard(elem, arr) {
 
