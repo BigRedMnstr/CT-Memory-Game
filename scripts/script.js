@@ -63,19 +63,27 @@ shuffle(cardsHard);
 $(function () {
     $('#easy').on('click', function () {
         $('.card').on("click", function () {
-            revealCardEasy(this);
+            revealCard(this, cardsEasy);
         });
     });
 });
 
-function revealCardEasy(elem) {
+$(function () {
+    $('#hard').on('click', function () {
+        $('.card').on("click", function () {
+            revealCard(this, cardsHard);
+        });
+    });
+});
+
+function revealCard(elem, arr) {
 
     var $elem = $(elem);
     var nr = Number($elem.attr("data-index"));
     var opacityValue = $('#c' + nr).css('opacity');
     if (opacityValue != 0 && lock === false) {
         lock = true;
-        var image = "url(img/easier/" + cardsEasy[nr] + ")";
+        var image = "url(img/easier/" + arr[nr] + ")";
         $('#c' + nr).css('background-image', image);
         $('#c' + nr).toggleClass('cardA');
         if (oneVisible === false)
@@ -85,7 +93,7 @@ function revealCardEasy(elem) {
             lock = false;
         } else
         {
-            if (cardsEasy [visible_nr] === cardsEasy[nr]) {
+            if (arr [visible_nr] === arr[nr]) {
                 setTimeout(function () {
                     hide2Cards(nr, visible_nr);
                 }, 750);
@@ -119,46 +127,4 @@ function restore2Cards(nr1, nr2) {
     $('#c' + nr2).css('background-image', 'url(img/easier/ct.png)');
     $('#c' + nr2).toggleClass('cardA');
     lock = false;
-}
-
-$(function () {
-    $('#hard').on('click', function () {
-        $('.card').on("click", function () {
-            revealCardHard(this);
-        });
-    });
-});
-
-function revealCardHard(elem) {
-
-    var $elem = $(elem);
-    var nr = Number($elem.attr("data-index"));
-    var opacityValue = $('#c' + nr).css('opacity');
-    if (opacityValue != 0 && lock === false) {
-        lock = true;
-        var image = "url(img/harder/" + cardsHard[nr] + ")";
-        $('#c' + nr).css('background-image', image);
-        $('#c' + nr).toggleClass('cardA');
-        if (oneVisible === false)
-        {
-            oneVisible = true;
-            visible_nr = nr;
-            lock = false;
-        } else
-        {
-            if (cardsHard [visible_nr] === cardsHard[nr]) {
-                setTimeout(function () {
-                    hide2Cards(nr, visible_nr);
-                }, 750);
-            } else {
-                setTimeout(function () {
-                    restore2Cards(nr, visible_nr);
-                }, 1000);
-            }
-
-            turnCounter++;
-            $('.score').html('Licznik rund : ' + turnCounter);
-            oneVisible = false;
-        }
-    }
 }
