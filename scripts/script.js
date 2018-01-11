@@ -10,29 +10,35 @@ var pairsLeft = 0;
 
 //Drawing the board
 
-$(function () {
+$(main);
 
-    $('#easy').on('click', function () {
-        startGame(16);
-        pairsLeft = 8;
-    });
-    $('#hard').on('click', function () {
-        startGame(32);
-        pairsLeft = 16;
-        cardsHard = cardsEasy.concat(cardsAdv);
-    });
+function main() {
+    easyGame();
+    hardGame();
+    startGame();
+}
 
-    function startGame(nr) {
-        var $tile = $('.tile');
-
-        for (i = 0; i < nr; i++) {
-            $("#board").append('<div id="c' + ($tile.length + i) + '" class="card" data-index="' + $tile.length + i + '"></div>');
-        }
-        if (i === 32) {
-            $("#board").css("width", "1200px");
-        }
-    }
+$('#easy').on('click', function easyGame() {
+    startGame(16);
+    pairsLeft = 8;
 });
+$('#hard').on('click', function hardGame() {
+    startGame(32);
+    pairsLeft = 16;
+    cardsHard = cardsEasy.concat(cardsAdv);
+});
+
+function startGame(nr) {
+    var $tile = $('.tile');
+
+    for (i = 0; i < nr; i++) {
+        $("#board").append('<div id="c' + ($tile.length + i) + '" class="card" data-index="' + $tile.length + i + '"></div>');
+    }
+    if (i === 32) {
+        $("#board").css("width", "1200px");
+    }
+}
+
 
 // Shuffle arrays with images in it
 
