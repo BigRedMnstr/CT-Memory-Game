@@ -16,7 +16,7 @@ function main() {
     startGame();
 }
 
-$('#easy').on('click', function easyGame() {
+$('#easy').one('click', function easyGame() {
     startGame(16);
     pairsLeft = 8;
     shuffle(cardsEasy);
@@ -24,7 +24,7 @@ $('#easy').on('click', function easyGame() {
         revealCard(this, cardsEasy);
     });
 });
-$('#hard').on('click', function hardGame() {
+$('#hard').one('click', function hardGame() {
     startGame(32);
     pairsLeft = 16;
     cardsHard = cardsEasy.concat(cardsAdv);
@@ -98,7 +98,10 @@ function hide2Cards(nr1, nr2) {
 
     pairsLeft--;
     if (pairsLeft === 0) {
-        $('#board').html('<h1>Wygrałeś!<br>Ukończyłeś grę w ' + turnCounter + ' tur.</h1>');
+        $('#board').html('<h1>Wygrałeś!<br>Ukończyłeś grę w ' + turnCounter + ' tur.</h1>' + '<button class="btn btn-primary" id="reload">Od nowa?</button>');
+        $('#reload').on('click', function () {
+            window.location.reload();
+        });
     }
 
     lock = false;
