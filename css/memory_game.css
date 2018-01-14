@@ -31,6 +31,12 @@ p {
     text-align: center;
 }
 
+.hardBoard {
+    width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
 .card {
     width: 128px;
     height: 128px;
@@ -75,4 +81,28 @@ p {
 .btn, btn-primary {
     cursor: pointer;
     background: #0056b3;
+}
+
+@media only screen and (max-width: 590px) {
+    h1 {
+        font-size: 1.5em;
+    }
+    #board, .hardBoard {
+        width: 420px;
+    }
+    .card, .cardA {
+        width: 96px;   
+    }
+}
+
+@media only screen and (max-width: 430px) {
+    h1 {
+        font-size: 1.2em;
+    }
+    #board, .hardBoard {
+        width: 320px;
+    }
+    .card, .cardA {
+        width: 60px;   
+    }
 }

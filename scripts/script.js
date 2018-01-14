@@ -41,7 +41,8 @@ function startGame(nr) {
         $("#board").append('<div id="c' + ($tile.length + i) + '" class="card" data-index="' + $tile.length + i + '"></div>');
     }
     if (i === 32) {
-        $("#board").css("width", "1200px");
+        $("#board").addClass("hardBoard");
+        $("#board").removeAttr("id");
     }
 }
 
