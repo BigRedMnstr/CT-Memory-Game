@@ -11,8 +11,6 @@ var pairsLeft = 0;
 $(main);
 
 function main() {
-    easyGame();
-    hardGame();
     startGame();
 }
 
@@ -42,7 +40,6 @@ function startGame(nr) {
     }
     if (i === 32) {
         $("#board").addClass("hardBoard");
-        $("#board").removeAttr("id");
     }
 }
 
