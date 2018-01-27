@@ -85,12 +85,6 @@ p {
 
 @media only screen and (max-width: 590px) {
     h1 {
-        font-size: 2em;
-    }
-}
-
-@media only screen and (max-width: 590px) {
-    h1 {
         font-size: 1.5em;
     }
     #board, .hardBoard {

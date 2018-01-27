@@ -40,6 +40,7 @@ function startGame(nr) {
     }
     if (i === 32) {
         $("#board").addClass("hardBoard");
+        $("#board").removeAttr("id");
     }
 }
 
